@@ -1,0 +1,16 @@
+.world-news-container {
+  padding: 40px;
+  background: #9ad3b7;
+}
+
+.world-news-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
