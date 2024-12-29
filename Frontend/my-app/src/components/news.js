@@ -29,10 +29,10 @@ const News = () => {
             return (
               <div className="col my-3">
                 <div className="card" style={{ width: "18rem" }}>
-                  <img src={val.img} className="card-img-top" alt="..." />
+                  <img src={val.Image} className="card-img-top" alt="..." />
                   <div className="card-body">
-                    <h5 className="card-title">{val.headline}</h5>
-                    <p className="card-text">{val.description}</p>
+                    <h5 className="card-title">{val.title}</h5>
+                    <p className="card-text">{val.content}</p>
                     <a
                       href={val.link}
                       target="_blank"
