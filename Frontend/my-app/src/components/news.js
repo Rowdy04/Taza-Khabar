@@ -1,54 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
- 
+
 const News = () => {
-  const [news, setnews] = useState([]);
+  const [news, setNews] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/news")
       .then((res) => {
         // handle success
         console.log(res.data);
-        setnews(res.data);
-        //  console.log(res);
+        setNews(res.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
   }, []);
+
   return (
-    <>
-      <div className="container my-5">
-        <div className="row text-center">
-          {news.map((val) => {
-            return (
-              <div className="col my-3">
-                <div className="card" style={{ width: "18rem" }}>
-                  <img src={val.Image} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">{val.title}</h5>
-                    <p className="card-text">{val.content}</p>
-                    <a
-                      href={val.link}
-                      target="_blank"
-                      className="btn btn-primary"
-                    >
-                      Know More
-                    </a>
-                  </div>
-                </div>
+    <div className="container my-5">
+      <div className="row text-center">
+        {news.map((val, index) => (
+          <div className="col-md-4 my-3" key={index}>
+            <div className="card shadow-sm" style={{ width: "18rem", borderRadius: "15px" }}>
+              <img src={val.Image} className="card-img-top" alt="News" style={{ borderTopLeftRadius: "15px", borderTopRightRadius: "15px" }} />
+              <div className="card-body">
+                <h5 className="card-title">{val.title}</h5>
+                <p className="card-text">{val.content}</p>
+                <a
+                  href={val.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  Know More
+                </a>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
- 
+
 export default News;
