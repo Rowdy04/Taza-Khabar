@@ -8,15 +8,16 @@ app.use(cors());
 app.use(express.json());
 
 const NewsModel = require("./models/news.js");
+const SignupModel = require("./models/Signup.js");
 
 mongoose.connect("mongodb://localhost:27017/DB", {
 }
 )
-   .then(() => {
-    console.log('Connected to MongoDB');
-}).catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-});
+    .then(() => {
+        console.log('Connected to MongoDB');
+    }).catch((error) => {
+        console.error('Error connecting to MongoDB:', error);
+    });
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
@@ -31,6 +32,36 @@ app.post('/api/addnews', async (req, res) => {
         const news = await NewsModel.create(req.body);
         res.status(200).json(news);
         console.log(req.body);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.post('/api/register', async (req, res) => {
+    try {
+        const Signup = await SignupModel.create(req.body);
+        res.status(200).json(Signup);
+        console.log(req.body);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.post('/api/Login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const Signup = await SignupModel.findOne({ username:username }).then((Signup) => {
+            if (Signup) {
+                if (Signup.password === password) {
+                    res.json({ message: "Login Successful" });
+                }
+                else {
+                    res.json({ message: "Invalid Password" });
+                }
+            } else {
+                res.json({ message: "User not found" });
+            }
+        });
     } catch (error) {
         res.status(500).send(error);
     }
