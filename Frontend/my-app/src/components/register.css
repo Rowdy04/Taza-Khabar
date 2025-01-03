@@ -1,0 +1,55 @@
+/* Light background for the card */
+.light-bg {
+  background-color: #f9f9f9; /* Light gray */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Soft text styling */
+.soft-text {
+  font-family: "Arial", sans-serif,"Times New Roman";
+  font-weight: bold;
+  color: #333;
+}
+
+/* Custom input styling */
+.soft-input {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.soft-input:focus {
+  border-color: #5b9bd5;
+  box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
+  outline: none;
+}
+
+/* Small text styling */
+.small-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Subtle link styling */
+.soft-link {
+  color: #5b9bd5;
+  transition: color 0.3s ease-in-out;
+}
+
+.soft-link:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Add subtle hover effect to buttons */
+.btn-primary:hover {
+  background-color: #4a90e2;
+  box-shadow: 0 5px 10px rgba(91, 155, 213, 0.3);
+}
+
+/* Card shadow customization */
+.card {
+  border: none;
+}
